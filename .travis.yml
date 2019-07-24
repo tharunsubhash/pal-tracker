@@ -45,6 +45,7 @@ jobs:
       before_deploy:
         - echo "Deploying $RELEASE_TAG to Cloud Foundry"
       before_script:
+        - chmod +x gradlew
         - cf login -a $CF_API_URL -u $CF_USERNAME -p $CF_PASSWORD -o $CF_ORG -s $CF_SPACE
         - scripts/migrate-databases.sh pal-tracker .
       deploy:
